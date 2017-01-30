@@ -17,7 +17,14 @@ ATank* ATankAIController::GetPlayerTank() const
 	}
 	return PC;
 }
-
+void ATankAIController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	if (GetPlayerTank())
+	{
+		GetControlledTank()->AimAt(GetPlayerTank()->GetActorLocation());
+	}
+}
 void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
