@@ -7,6 +7,7 @@
 
 class UTankBarrel1;
 
+//Holds barrel's properties
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class MYPROJECT_API UTankAimingComponent : public UActorComponent
 {
