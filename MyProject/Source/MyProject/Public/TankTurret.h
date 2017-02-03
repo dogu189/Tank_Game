@@ -8,12 +8,18 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(meta = (BlueprintSpawnableComponent))
 class MYPROJECT_API UTankTurret : public UStaticMeshComponent
 {
 	GENERATED_BODY()
 	
 	
-	
+public:
+	void Turn(float RelativeSpeed);
+
+private:
+
+	UPROPERTY(EditAnywhere, Category = TurretMovement)
+	float MaxDegreesTurnSecond = 10;
 	
 };

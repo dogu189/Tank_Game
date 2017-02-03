@@ -34,6 +34,7 @@ void  ATankPlayerController::AimTowardsCrossHair()
 	if (GetSightRayHitLocation(HitLocation))
 	{
 		GetControlledTank()->AimAt(HitLocation);
+	
 	}
 }
 ATank* ATankPlayerController::GetControlledTank() const
