@@ -8,6 +8,7 @@
 class UTankBarrel1;
 class UTankAimingComponent;
 class UTankTurret;
+class AProjectile;
 
 UCLASS()
 class MYPROJECT_API ATank : public APawn
@@ -29,6 +30,7 @@ public:
 
 protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
+
 private:
 	// Sets default values for this pawn's properties
 	ATank();
@@ -44,6 +46,11 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Firing")
 	float LaunchSpeed = 100000;
+
+	UPROPERTY(EditAnywhere, Category = Setup)
+	TSubclassOf<AProjectile> ProjectileBlueprint;
+
+	UTankBarrel1* TankBarrel = nullptr;
 
 
 
