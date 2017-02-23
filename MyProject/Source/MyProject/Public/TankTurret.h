@@ -19,7 +19,7 @@ public:
 
 private:
 
-	UPROPERTY(EditAnywhere, Category = TurretMovement)
+	UPROPERTY(EditDefaultsOnly, Category = TurretMovement)
 	float MaxDegreesTurnSecond = 10;
 	
 };

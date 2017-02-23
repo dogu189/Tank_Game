@@ -16,8 +16,6 @@ ATank::ATank()
 	PrimaryActorTick.bCanEverTick = true;
 
 	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming Component"));
-	
-	
 
 }
 
@@ -55,14 +53,18 @@ void ATank::AimAt(FVector HitLocation)
 }
 void ATank::Fire()
 {
-	if (!TankBarrel) { return; }
 
-	auto Projectile = GetWorld()->SpawnActor<AProjectile>(
-		ProjectileBlueprint,
-		TankBarrel->GetSocketLocation(FName("Projectile")),
-		TankBarrel->GetSocketRotation(FName("Projectile"))
-		);
+	bool isReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
+	if (TankBarrel && isReloaded) {
 
-	Projectile->LaunchProjectile(LaunchSpeed);
+		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
+			ProjectileBlueprint,
+			TankBarrel->GetSocketLocation(FName("Projectile")),
+			TankBarrel->GetSocketRotation(FName("Projectile"))
+			);
+
+		Projectile->LaunchProjectile(LaunchSpeed);
+		LastFireTime = FPlatformTime::Seconds();
+	}
 }
 
